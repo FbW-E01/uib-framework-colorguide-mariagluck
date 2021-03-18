@@ -1,3 +1,160 @@
+// colors
+$theme-colors: (
+    warning: #fbd200,
+    info: #0dc,
+    danger: #e30032,
+    primary: #6f42c1
+    ); 
+
+$grid-gutter-width: 20px;
+$screen-sm-min: 100px;
+
+@mixin make-three-column(
+  $gutter: $grid-gutter-width,
+  $breakpoint: $screen-sm-min
+) {
+  position: relative;
+  min-height: 1px;
+  padding-left: ($gutter / 2);
+  padding-right: ($gutter / 2);
+
+  @media (min-width: $breakpoint) {
+    width: 30%;
+    height: 200px;
+    
+  }
+}
 // This is where you can import other stylesheets or write your scss code
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 50px;
+  margin: auto;
+}
+
+.wrapper {
+  width: 80vw;
+  height: 100vh;
+  margin: auto;
+}
+// Style the top row
+.container {
+    margin: 60px;
+
+    p {
+        font-size: 1.4em;
+        color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+//Style the container2
+.container2 {
+  width: 100%;
+  height: 300px;
+}
+
+// Color cards darker and lighter
+.col1 {
+  @include make-three-column(0);
+  padding: 30px;
+  width: max-content;
+  height: max-content;
+  &:nth-child(1) {
+    background: lighten(yellow, 10%);
+  }
+  &:nth-child(2) {
+    background: $yellow;
+  }
+  &:nth-child(3) {
+    background: darken(yellow, 10%);
+  }
+}
+
+.col2 {
+    @include make-three-column(0);
+    padding: 30px;
+    width: max-content;
+    height: max-content;
+    &:nth-child(1) {
+      background: lighten($info, 10%);
+    }
+    &:nth-child(2) {
+      background: $info;
+    }
+    &:nth-child(3) {
+      background: darken($info, 10%);
+    }
+  }
+
+  .col3 {
+    @include make-three-column(0);
+    padding: 30px;
+    width: max-content;
+    height: max-content;
+    &:nth-child(1) {
+      background: lighten($danger, 10%);
+    }
+    &:nth-child(2) {
+      background: $danger;
+    }
+    &:nth-child(3) {
+      background: darken($danger, 10%);
+    }
+  }
+  
+  .col4 {
+    @include make-three-column(0);
+    padding: 30px;
+    width: max-content;
+    height: max-content;
+    &:nth-child(1) {
+      background: lighten($purple, 10%);
+    }
+    &:nth-child(2) {
+      background: $purple;
+    }
+    &:nth-child(3) {
+      background: darken($purple, 10%);
+    }
+  }
+
+//   for tablet screen
+  @media only screen and (min-width: 768px) and (max-width: 1023px)  {
+
+    .wrapper {
+        display: flex;
+        margin: auto;
+
+        .container {
+            width: 50%;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        .container2 {
+           flex-direction: column;
+           flex-wrap: wrap;
+           justify-content: center;
+           align-items: center;
+        }
+    }
+
+  }
+
+//   for mobile screens
+  @media only screen and (max-width: 768px) {
+    
+    .container{
+        display: block;
+        margin: auto;
+    }
+  } 
